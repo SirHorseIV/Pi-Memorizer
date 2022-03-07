@@ -9,12 +9,12 @@ WINDOW_SIZE=[800,200]
 screen=pygame.display.set_mode(WINDOW_SIZE)
 pygame.display.set_caption("Pi Memorizer")
 inp=inputHandler()
-with open("piMemorizer/pi.txt","r") as file:
+with open("pi.txt","r") as file:
     digits=file.read()
 index=0
 digitNum=0
-font=pygame.font.Font("piMemorizer/Shippori.ttf",150)
-smallFont=pygame.font.Font("piMemorizer/Shippori.ttf",30)
+font=pygame.font.Font("Shippori.ttf",150)
+smallFont=pygame.font.Font("Shippori.ttf",30)
 text=font.render(digits[:index],True,(255,255,255))
 textRect=text.get_rect(center=(WINDOW_SIZE[0]/2,WINDOW_SIZE[1]/2))
 smallText=smallFont.render(str(digitNum),True,(255,255,255))
