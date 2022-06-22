@@ -1,15 +1,30 @@
-<html lang="en-us"><head>
-    <title>Pi Memorizer</title>
+<!doctype html>
+<html lang="en-us">
+<head>
+    <title>CPython</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="mobile-web-app-capable" content="yes">
-    
-    <link rel="icon" type="image/png" href="http://localhost:8000//favicon.png" sizes="16x16">
+<!--
+    Pygbag Version : 0.0.5
+    CDN URL : https://pygame-web.github.io/pygbag/
 
-    <link rel="stylesheet" href="http://localhost:8000//styles.css">
-    <link rel="stylesheet" href="http://localhost:8000//xtermjsixel/xterm.css">
-    <link rel="stylesheet" href="http://localhost:8000//xtermjsixel/style.css">
+    Title   : cookiecutter.title
+    Folder  : piMemorizer
+    Authors : pgw
+    SPDX-License-Identifier: cookiecutter.spdx
+
+    {%- if cookiecutter.comment != "" -%}
+{{cookiecutter.comment}}
+    {% endif %}
+
+-->
+    <link rel="icon" type="image/png" href="https://pygame-web.github.io/pygbag//favicon.png" sizes="16x16" />
+
+    <link rel="stylesheet" href="https://pygame-web.github.io/pygbag//styles.css"/>
+    <link rel="stylesheet" href="https://pygame-web.github.io/pygbag//xtermjsixel/xterm.css" />
+    <link rel="stylesheet" href="https://pygame-web.github.io/pygbag//xtermjsixel/style.css"/>
 
     <style>
         #status {
@@ -61,34 +76,62 @@
         }
     </style>
 
-    <script src="http://localhost:8000//xtermjsixel/xterm.js"></script>
-    <script src="http://localhost:8000//xtermjsixel/xterm-addon-image.js"></script>
-    <script src="http://localhost:8000//browserfs.min.js"></script>
+    <script src="https://pygame-web.github.io/pygbag//xtermjsixel/xterm.js"></script>
+    <script src="https://pygame-web.github.io/pygbag//xtermjsixel/xterm-addon-image.js"></script>
+    <script src="https://pygame-web.github.io/pygbag//browserfs.min.js"></script>
 
-    <script type="module" src="http://localhost:8000//python311.js" async="" defer=""></script>
+    <script type="module" src="https://pygame-web.github.io/pygbag//python311.js" async defer></script>
 
 
-<script type="text/javascript" src="http://localhost:8000/python311/main.js" async="true"></script></head>
+</head>
 
 <body>
-    
-    
-    
+    <div class="spinner" id='spinner'></div>
+    <div class="emscripten" id="status">Downloading...</div>
+    <div class="emscripten">
+      <progress value="0" max="100" id="progress" hidden=1></progress>
+    </div>
 
-    
-        <div class="center" align="center">
-            <canvas class="emscripten" id="canvas" width="800" height="200" style="width: 1600px; height: 400px; cursor: default;" oncontextmenu="event.preventDefault()" tabindex="0">
+    <!-- <div class="thick_border" align=center > -->
+        <div class="topright" align="center">
+            <canvas class="emscripten" id="canvas"
+width="800px" height="600px"
+style="width: 470px; height: 320px;"
+            oncontextmenu="event.preventDefault()" tabindex=0>
             </canvas>
-            
+            <div class="button-container">
+                800x600=&gt;470x320
+                <button id="aiostop" disabled>AIO ⏏︎</button>
+                <button id="aiopaused_true" disabled>AIO ■</button>
+                <button id="aiopaused_false" disabled>AIO ▶</button>
+                <button id="pygame_music_pause" disabled>Music ■</button>
+                &nbsp;
+            </div>
 
         </div>
 
-        
-        
+        <div id="terminal" tabIndex=1 align="left"><p></div>
+        <br>
+        &nbsp;VT340
 
-        
+        <div id="info" class="trinfo" style="width: 470px;height=70px;">
+        </div>
 
-    
+        <iframe id="iframe" class="framed" name="iframe"
+height="88%" width="470px"
+            sandbox="allow-same-origin allow-top-navigation allow-scripts allow-pointer-lock"
+            mozallowfullscreen="true"
+            allow="autoplay; fullscreen *; geolocation; microphone; camera; midi; monetization; xr-spatial-tracking; gamepad; gyroscope; accelerometer; xr; cross-origin-isolated"
+            frameborder="0"
+            src="about://"
+            msallowfullscreen="true"
+            scrolling="yes"
+            allowfullscreen="true"
+            webkitallowfullscreen="true"
+            allowtransparency="true">
+        </iframe>
+
+    <!--    </div> -->
 
 
     <script type="application/javascript">
@@ -96,7 +139,7 @@
         xtermjs : "1" ,
         _sdl2 : "canvas",
         archive : "piMemorizer",
-        cdn : "http://localhost:8000/",
+        cdn : "https://pygame-web.github.io/pygbag/",
         autorun : 0
     }
 
@@ -203,7 +246,7 @@ if os.path.isfile("/data/data/pythonrc.py"):
             runsite = runsite+ `print("_"*80);print("${python.motd}");print("_"*80);`
 
 
-        if (await _rcp("http://localhost:8000//pythonrc.py","/data/data/pythonrc.py")) {
+        if (await _rcp("https://pygame-web.github.io/pygbag//pythonrc.py","/data/data/pythonrc.py")) {
 
             if (python.APK != "org.python") {
                 if (config.autorun) {
@@ -247,6 +290,5 @@ if os.path.isfile("/data/data/pythonrc.py"):
     }
 
     </script>
-
-
-</body></html>
+</body>
+</html>
